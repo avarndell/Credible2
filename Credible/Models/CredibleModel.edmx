@@ -1,0 +1,844 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CredibleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="portal_id" />
+          </Key>
+          <Property Name="portal_id" Type="int" Nullable="false" />
+          <Property Name="course_portal_nm" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="TestID" />
+            <PropertyRef Name="TestName" />
+          </Key>
+          <Property Name="TestID" Type="int" Nullable="false" />
+          <Property Name="TestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TestDate" Type="date" />
+        </EntityType>
+        <EntityType Name="u_course_portal">
+          <Key>
+            <PropertyRef Name="course_portal_id" />
+          </Key>
+          <Property Name="course_portal_id" Type="int" Nullable="false" />
+          <Property Name="portal_id" Type="int" Nullable="false" />
+          <Property Name="course_variant_id" Type="int" Nullable="false" />
+          <Property Name="credit_type_cd" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="credit_type_nm" Type="varchar" MaxLength="128" />
+          <Property Name="earned_credit" Type="decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="syllabus" Type="text" />
+          <Property Name="syllabus_url" Type="varchar" MaxLength="256" />
+          <Property Name="regular_px" Type="decimal" Precision="13" Scale="4" Nullable="false" />
+          <Property Name="sale_px" Type="decimal" Precision="13" Scale="4" />
+          <Property Name="sort_order" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="forum_ind" Type="bit" Nullable="false" />
+          <Property Name="classroom_sz" Type="int" Nullable="false" />
+          <Property Name="forum_posts_per_topic" Type="int" />
+          <Property Name="display_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="display_finish_dt" Type="datetime" Nullable="false" />
+          <Property Name="purchase_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="purchase_finish_dt" Type="datetime" Nullable="false" />
+          <Property Name="access_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="access_finish_dt" Type="datetime" />
+          <Property Name="access_day" Type="int" />
+          <Property Name="active_ind" Type="bit" Nullable="false" />
+          <Property Name="created_dttm" Type="datetime" Nullable="false" />
+          <Property Name="created_id" Type="int" Nullable="false" />
+          <Property Name="modified_dttm" Type="datetime" />
+          <Property Name="modified_id" Type="int" />
+          <Property Name="grade_id" Type="int" Nullable="false" />
+          <Property Name="deployment_status" Type="varchar(max)" />
+          <Property Name="reg_method" Type="int" />
+          <Property Name="course_portal_nm" Type="varchar" MaxLength="256" />
+          <Property Name="self_reg_enabled_ind" Type="bit" Nullable="false" />
+          <Property Name="course_display_nm" Type="varchar" MaxLength="256" />
+          <Property Name="course_display_img" Type="varchar(max)" />
+          <Property Name="course_subject" Type="varchar" MaxLength="256" />
+          <Property Name="course_topic" Type="varchar" MaxLength="256" />
+          <Property Name="course_default_standard" Type="varchar" MaxLength="256" />
+          <Property Name="credit_upgrade_ind" Type="bit" />
+          <Property Name="upgrade_price" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="upgrade_overview" Type="varchar(max)" />
+          <Property Name="enable_evidence" Type="bit" Nullable="false" />
+          <Property Name="credit_acceptance" Type="varchar(max)" />
+          <Property Name="clustered_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_portal">
+          <Key>
+            <PropertyRef Name="portal_id" />
+          </Key>
+          <Property Name="portal_id" Type="int" Nullable="false" />
+          <Property Name="portal_nm" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="state_id" Type="int" />
+          <Property Name="agency_id" Type="int" />
+          <Property Name="school_id" Type="int" />
+          <Property Name="portal_type_id" Type="int" Nullable="false" />
+          <Property Name="marketing_partner_ind" Type="bit" Nullable="false" />
+          <Property Name="credit_grantor_ind" Type="bit" Nullable="false" />
+          <Property Name="other_credit_grantor_id" Type="int" />
+          <Property Name="direct_buyer_ind" Type="bit" Nullable="false" />
+          <Property Name="notes" Type="text" />
+          <Property Name="display_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="display_finish_dt" Type="datetime" Nullable="false" />
+          <Property Name="purchase_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="purchase_finish_dt" Type="datetime" Nullable="false" />
+          <Property Name="access_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="access_finish_dt" Type="datetime" />
+          <Property Name="access_day" Type="int" />
+          <Property Name="title" Type="text" />
+          <Property Name="keyword" Type="text" />
+          <Property Name="description" Type="text" />
+          <Property Name="introduction" Type="text" />
+          <Property Name="promotion" Type="text" />
+          <Property Name="data" Type="text" />
+          <Property Name="completion" Type="text" />
+          <Property Name="flyer_url" Type="varchar" MaxLength="256" />
+          <Property Name="logo_url" Type="varchar" MaxLength="256" />
+          <Property Name="logo" Type="varchar" MaxLength="1024" />
+          <Property Name="contact_email" Type="varchar" MaxLength="256" />
+          <Property Name="active_ind" Type="bit" Nullable="false" />
+          <Property Name="created_dttm" Type="datetime" Nullable="false" />
+          <Property Name="created_id" Type="int" Nullable="false" />
+          <Property Name="modified_dttm" Type="datetime" />
+          <Property Name="modified_id" Type="int" />
+          <Property Name="RoleId" Type="uniqueidentifier" />
+          <Property Name="theme" Type="varchar" MaxLength="64" />
+          <Property Name="login_page_logo" Type="varchar" MaxLength="100" />
+          <Property Name="login_page_text" Type="varchar" MaxLength="250" />
+          <Property Name="special_use" Type="bit" />
+          <Property Name="self_reg_ind" Type="bit" Nullable="false" />
+          <Property Name="self_reg_limit_by_teacher" Type="bit" />
+          <Property Name="eClassroom_logo" Type="varchar" MaxLength="250" />
+          <Property Name="self_reg_teacher_course_limit" Type="int" />
+          <Property Name="chat_ind" Type="bit" Nullable="false" />
+          <Property Name="pwd_change_rqd_ind" Type="bit" Nullable="false" />
+          <Property Name="review_mode_ind" Type="bit" Nullable="false" />
+          <Property Name="only_grade_complete_ind" Type="bit" />
+          <Property Name="clustered_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_registration">
+          <Key>
+            <PropertyRef Name="registration_id" />
+          </Key>
+          <Property Name="registration_id" Type="int" Nullable="false" />
+          <Property Name="order_detail_id" Type="int" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="course_portal_id" Type="int" Nullable="false" />
+          <Property Name="registration_dttm" Type="datetime" Nullable="false" />
+          <Property Name="registration_type_cd" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="drop_out_dttm" Type="datetime" />
+          <Property Name="access_start_dt" Type="datetime" Nullable="false" />
+          <Property Name="access_finish_dt" Type="datetime" Nullable="false" />
+          <Property Name="active_ind" Type="bit" Nullable="false" />
+          <Property Name="created_dttm" Type="datetime" Nullable="false" />
+          <Property Name="created_id" Type="int" Nullable="false" />
+          <Property Name="modified_dttm" Type="datetime" />
+          <Property Name="modified_id" Type="int" />
+          <Property Name="complete_dttm" Type="datetime" />
+          <Property Name="final_grade" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="course_portal_self_reg_id" Type="int" />
+          <Property Name="credit_upgrade_ind" Type="bit" />
+          <Property Name="withdrawn_ind" Type="bit" Nullable="false" />
+          <Property Name="grade_id" Type="int" />
+          <Property Name="enrollment_status_id" Type="int" Nullable="false" />
+          <Property Name="last_activity_date" Type="datetime" />
+          <Property Name="clustered_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="company_nm" Type="varchar" MaxLength="256" />
+          <Property Name="title" Type="varchar" MaxLength="128" />
+          <Property Name="department" Type="varchar" MaxLength="128" />
+          <Property Name="first_nm" Type="varchar" MaxLength="128" />
+          <Property Name="last_nm" Type="varchar" MaxLength="128" />
+          <Property Name="phone1" Type="varchar" MaxLength="32" />
+          <Property Name="phone2" Type="varchar" MaxLength="32" />
+          <Property Name="fax" Type="varchar" MaxLength="32" />
+          <Property Name="address1" Type="varchar" MaxLength="128" />
+          <Property Name="address2" Type="varchar" MaxLength="128" />
+          <Property Name="city" Type="varchar" MaxLength="128" />
+          <Property Name="county_id" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="128" />
+          <Property Name="postal_cd" Type="varchar" MaxLength="15" />
+          <Property Name="sec_address1" Type="varchar" MaxLength="128" />
+          <Property Name="sec_address2" Type="varchar" MaxLength="128" />
+          <Property Name="sec_city" Type="varchar" MaxLength="128" />
+          <Property Name="sec_state" Type="varchar" MaxLength="128" />
+          <Property Name="sec_postal_cd" Type="varchar" MaxLength="15" />
+          <Property Name="speaker_ind" Type="bit" Nullable="false" />
+          <Property Name="marketing_partner_ind" Type="bit" Nullable="false" />
+          <Property Name="credit_grantor_ind" Type="bit" Nullable="false" />
+          <Property Name="direct_buyer_ind" Type="bit" Nullable="false" />
+          <Property Name="active_ind" Type="bit" Nullable="false" />
+          <Property Name="created_dttm" Type="datetime" Nullable="false" />
+          <Property Name="created_id" Type="int" Nullable="false" />
+          <Property Name="modified_dttm" Type="datetime" />
+          <Property Name="modified_id" Type="int" />
+          <Property Name="notification_email_ind" Type="bit" Nullable="false" />
+          <Property Name="subject_id" Type="int" />
+          <Property Name="grade_level_id" Type="int" />
+          <Property Name="position_id" Type="int" />
+          <Property Name="temp_pwd_changed" Type="bit" Nullable="false" />
+          <Property Name="user_agreement_accept_dttm" Type="datetime" />
+          <Property Name="district_employee_id" Type="varchar" MaxLength="50" />
+          <Property Name="state_employee_id" Type="varchar" MaxLength="50" />
+          <Property Name="group_nm" Type="varchar" MaxLength="64" />
+          <Property Name="review_mode_ind" Type="bit" Nullable="false" />
+          <Property Name="chat_ind" Type="bit" Nullable="false" />
+          <Property Name="soc_sec_nmb" Type="varchar" MaxLength="12" />
+          <Property Name="date_of_birth" Type="datetime" />
+          <Property Name="avatar_url" Type="varchar" MaxLength="256" />
+          <Property Name="thumbnail_url" Type="varchar" MaxLength="256" />
+          <Property Name="clustered_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="registration_dttm" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="registration_dttm" Type="datetime" Nullable="false" />
+          <Property Name="first_nm" Type="varchar" MaxLength="128" />
+          <Property Name="last_nm" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_dbo_u_course_portal_dbo_u_portal_portal_id">
+          <End Role="u_portal" Type="Self.u_portal" Multiplicity="1" />
+          <End Role="u_course_portal" Type="Self.u_course_portal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_portal">
+              <PropertyRef Name="portal_id" />
+            </Principal>
+            <Dependent Role="u_course_portal">
+              <PropertyRef Name="portal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_u_registration_dbo_u_course_portal_course_portal_id">
+          <End Role="u_course_portal" Type="Self.u_course_portal" Multiplicity="1" />
+          <End Role="u_registration" Type="Self.u_registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_course_portal">
+              <PropertyRef Name="course_portal_id" />
+            </Principal>
+            <Dependent Role="u_registration">
+              <PropertyRef Name="course_portal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_u_registration_dbo_u_user_user_id">
+          <End Role="u_user" Type="Self.u_user" Multiplicity="1" />
+          <End Role="u_registration" Type="Self.u_registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="u_registration">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CredibleModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_course_portal" EntityType="Self.u_course_portal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_portal" EntityType="Self.u_portal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_registration" EntityType="Self.u_registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_user" EntityType="Self.u_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_u_course_portal_dbo_u_portal_portal_id" Association="Self.FK_dbo_u_course_portal_dbo_u_portal_portal_id">
+            <End Role="u_portal" EntitySet="u_portal" />
+            <End Role="u_course_portal" EntitySet="u_course_portal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_u_registration_dbo_u_course_portal_course_portal_id" Association="Self.FK_dbo_u_registration_dbo_u_course_portal_course_portal_id">
+            <End Role="u_course_portal" EntitySet="u_course_portal" />
+            <End Role="u_registration" EntitySet="u_registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_u_registration_dbo_u_user_user_id" Association="Self.FK_dbo_u_registration_dbo_u_user_user_id">
+            <End Role="u_user" EntitySet="u_user" />
+            <End Role="u_registration" EntitySet="u_registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CredibleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="portal_id" />
+          </Key>
+          <Property Name="portal_id" Type="Int32" Nullable="false" />
+          <Property Name="course_portal_nm" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="TestID" />
+            <PropertyRef Name="TestName" />
+          </Key>
+          <Property Name="TestID" Type="Int32" Nullable="false" />
+          <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TestDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="u_course_portal">
+          <Key>
+            <PropertyRef Name="course_portal_id" />
+          </Key>
+          <Property Name="course_portal_id" Type="Int32" Nullable="false" />
+          <Property Name="portal_id" Type="Int32" Nullable="false" />
+          <Property Name="course_variant_id" Type="Int32" Nullable="false" />
+          <Property Name="credit_type_cd" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="credit_type_nm" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="earned_credit" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="syllabus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="syllabus_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="regular_px" Type="Decimal" Precision="13" Scale="4" Nullable="false" />
+          <Property Name="sale_px" Type="Decimal" Precision="13" Scale="4" />
+          <Property Name="sort_order" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="forum_ind" Type="Boolean" Nullable="false" />
+          <Property Name="classroom_sz" Type="Int32" Nullable="false" />
+          <Property Name="forum_posts_per_topic" Type="Int32" />
+          <Property Name="display_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="display_finish_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="purchase_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="purchase_finish_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_finish_dt" Type="DateTime" Precision="3" />
+          <Property Name="access_day" Type="Int32" />
+          <Property Name="active_ind" Type="Boolean" Nullable="false" />
+          <Property Name="created_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_id" Type="Int32" Nullable="false" />
+          <Property Name="modified_dttm" Type="DateTime" Precision="3" />
+          <Property Name="modified_id" Type="Int32" />
+          <Property Name="grade_id" Type="Int32" Nullable="false" />
+          <Property Name="deployment_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="reg_method" Type="Int32" />
+          <Property Name="course_portal_nm" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="self_reg_enabled_ind" Type="Boolean" Nullable="false" />
+          <Property Name="course_display_nm" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="course_display_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="course_subject" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="course_topic" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="course_default_standard" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="credit_upgrade_ind" Type="Boolean" />
+          <Property Name="upgrade_price" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="upgrade_overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="enable_evidence" Type="Boolean" Nullable="false" />
+          <Property Name="credit_acceptance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="clustered_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="u_portal" Relationship="Self.FK_dbo_u_course_portal_dbo_u_portal_portal_id" FromRole="u_course_portal" ToRole="u_portal" />
+          <NavigationProperty Name="u_registration" Relationship="Self.FK_dbo_u_registration_dbo_u_course_portal_course_portal_id" FromRole="u_course_portal" ToRole="u_registration" />
+        </EntityType>
+        <EntityType Name="u_portal">
+          <Key>
+            <PropertyRef Name="portal_id" />
+          </Key>
+          <Property Name="portal_id" Type="Int32" Nullable="false" />
+          <Property Name="portal_nm" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="state_id" Type="Int32" />
+          <Property Name="agency_id" Type="Int32" />
+          <Property Name="school_id" Type="Int32" />
+          <Property Name="portal_type_id" Type="Int32" Nullable="false" />
+          <Property Name="marketing_partner_ind" Type="Boolean" Nullable="false" />
+          <Property Name="credit_grantor_ind" Type="Boolean" Nullable="false" />
+          <Property Name="other_credit_grantor_id" Type="Int32" />
+          <Property Name="direct_buyer_ind" Type="Boolean" Nullable="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="display_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="display_finish_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="purchase_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="purchase_finish_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_finish_dt" Type="DateTime" Precision="3" />
+          <Property Name="access_day" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="keyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="promotion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="completion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="flyer_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="logo_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="contact_email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="active_ind" Type="Boolean" Nullable="false" />
+          <Property Name="created_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_id" Type="Int32" Nullable="false" />
+          <Property Name="modified_dttm" Type="DateTime" Precision="3" />
+          <Property Name="modified_id" Type="Int32" />
+          <Property Name="RoleId" Type="Guid" />
+          <Property Name="theme" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="login_page_logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="login_page_text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="special_use" Type="Boolean" />
+          <Property Name="self_reg_ind" Type="Boolean" Nullable="false" />
+          <Property Name="self_reg_limit_by_teacher" Type="Boolean" />
+          <Property Name="eClassroom_logo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="self_reg_teacher_course_limit" Type="Int32" />
+          <Property Name="chat_ind" Type="Boolean" Nullable="false" />
+          <Property Name="pwd_change_rqd_ind" Type="Boolean" Nullable="false" />
+          <Property Name="review_mode_ind" Type="Boolean" Nullable="false" />
+          <Property Name="only_grade_complete_ind" Type="Boolean" />
+          <Property Name="clustered_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="u_course_portal" Relationship="Self.FK_dbo_u_course_portal_dbo_u_portal_portal_id" FromRole="u_portal" ToRole="u_course_portal" />
+        </EntityType>
+        <EntityType Name="u_registration">
+          <Key>
+            <PropertyRef Name="registration_id" />
+          </Key>
+          <Property Name="registration_id" Type="Int32" Nullable="false" />
+          <Property Name="order_detail_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="course_portal_id" Type="Int32" Nullable="false" />
+          <Property Name="registration_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="registration_type_cd" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="drop_out_dttm" Type="DateTime" Precision="3" />
+          <Property Name="access_start_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access_finish_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="active_ind" Type="Boolean" Nullable="false" />
+          <Property Name="created_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_id" Type="Int32" Nullable="false" />
+          <Property Name="modified_dttm" Type="DateTime" Precision="3" />
+          <Property Name="modified_id" Type="Int32" />
+          <Property Name="complete_dttm" Type="DateTime" Precision="3" />
+          <Property Name="final_grade" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="course_portal_self_reg_id" Type="Int32" />
+          <Property Name="credit_upgrade_ind" Type="Boolean" />
+          <Property Name="withdrawn_ind" Type="Boolean" Nullable="false" />
+          <Property Name="grade_id" Type="Int32" />
+          <Property Name="enrollment_status_id" Type="Int32" Nullable="false" />
+          <Property Name="last_activity_date" Type="DateTime" Precision="3" />
+          <Property Name="clustered_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="u_course_portal" Relationship="Self.FK_dbo_u_registration_dbo_u_course_portal_course_portal_id" FromRole="u_registration" ToRole="u_course_portal" />
+          <NavigationProperty Name="u_user" Relationship="Self.FK_dbo_u_registration_dbo_u_user_user_id" FromRole="u_registration" ToRole="u_user" />
+        </EntityType>
+        <EntityType Name="u_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="company_nm" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="first_nm" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="last_nm" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="phone1" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="phone2" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="address1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="county_id" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="postal_cd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="sec_address1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="sec_address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="sec_city" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="sec_state" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="sec_postal_cd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="speaker_ind" Type="Boolean" Nullable="false" />
+          <Property Name="marketing_partner_ind" Type="Boolean" Nullable="false" />
+          <Property Name="credit_grantor_ind" Type="Boolean" Nullable="false" />
+          <Property Name="direct_buyer_ind" Type="Boolean" Nullable="false" />
+          <Property Name="active_ind" Type="Boolean" Nullable="false" />
+          <Property Name="created_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_id" Type="Int32" Nullable="false" />
+          <Property Name="modified_dttm" Type="DateTime" Precision="3" />
+          <Property Name="modified_id" Type="Int32" />
+          <Property Name="notification_email_ind" Type="Boolean" Nullable="false" />
+          <Property Name="subject_id" Type="Int32" />
+          <Property Name="grade_level_id" Type="Int32" />
+          <Property Name="position_id" Type="Int32" />
+          <Property Name="temp_pwd_changed" Type="Boolean" Nullable="false" />
+          <Property Name="user_agreement_accept_dttm" Type="DateTime" Precision="3" />
+          <Property Name="district_employee_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state_employee_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_nm" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="review_mode_ind" Type="Boolean" Nullable="false" />
+          <Property Name="chat_ind" Type="Boolean" Nullable="false" />
+          <Property Name="soc_sec_nmb" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_birth" Type="DateTime" Precision="3" />
+          <Property Name="avatar_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnail_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="clustered_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="u_registration" Relationship="Self.FK_dbo_u_registration_dbo_u_user_user_id" FromRole="u_user" ToRole="u_registration" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="registration_dttm" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="registration_dttm" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_nm" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="last_nm" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_dbo_u_course_portal_dbo_u_portal_portal_id">
+          <End Role="u_portal" Type="Self.u_portal" Multiplicity="1" />
+          <End Role="u_course_portal" Type="Self.u_course_portal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_portal">
+              <PropertyRef Name="portal_id" />
+            </Principal>
+            <Dependent Role="u_course_portal">
+              <PropertyRef Name="portal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_u_registration_dbo_u_course_portal_course_portal_id">
+          <End Role="u_course_portal" Type="Self.u_course_portal" Multiplicity="1" />
+          <End Role="u_registration" Type="Self.u_registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_course_portal">
+              <PropertyRef Name="course_portal_id" />
+            </Principal>
+            <Dependent Role="u_registration">
+              <PropertyRef Name="course_portal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_u_registration_dbo_u_user_user_id">
+          <End Role="u_user" Type="Self.u_user" Multiplicity="1" />
+          <End Role="u_registration" Type="Self.u_registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="u_registration">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CredibleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="courses" EntityType="Self.course" />
+          <EntitySet Name="tests" EntityType="Self.test" />
+          <EntitySet Name="u_course_portal" EntityType="Self.u_course_portal" />
+          <EntitySet Name="u_portal" EntityType="Self.u_portal" />
+          <EntitySet Name="u_registration" EntityType="Self.u_registration" />
+          <EntitySet Name="u_user" EntityType="Self.u_user" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_dbo_u_course_portal_dbo_u_portal_portal_id" Association="Self.FK_dbo_u_course_portal_dbo_u_portal_portal_id">
+            <End Role="u_portal" EntitySet="u_portal" />
+            <End Role="u_course_portal" EntitySet="u_course_portal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_u_registration_dbo_u_course_portal_course_portal_id" Association="Self.FK_dbo_u_registration_dbo_u_course_portal_course_portal_id">
+            <End Role="u_course_portal" EntitySet="u_course_portal" />
+            <End Role="u_registration" EntitySet="u_registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_u_registration_dbo_u_user_user_id" Association="Self.FK_dbo_u_registration_dbo_u_user_user_id">
+            <End Role="u_user" EntitySet="u_user" />
+            <End Role="u_registration" EntitySet="u_registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CredibleModelStoreContainer" CdmEntityContainer="CredibleEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="CredibleModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CredibleModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="CredibleModel.course">
+              <MappingFragment StoreEntitySet="course">
+                <ScalarProperty Name="portal_id" ColumnName="portal_id" />
+                <ScalarProperty Name="course_portal_nm" ColumnName="course_portal_nm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tests">
+            <EntityTypeMapping TypeName="CredibleModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="TestID" ColumnName="TestID" />
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_course_portal">
+            <EntityTypeMapping TypeName="CredibleModel.u_course_portal">
+              <MappingFragment StoreEntitySet="u_course_portal">
+                <ScalarProperty Name="course_portal_id" ColumnName="course_portal_id" />
+                <ScalarProperty Name="portal_id" ColumnName="portal_id" />
+                <ScalarProperty Name="course_variant_id" ColumnName="course_variant_id" />
+                <ScalarProperty Name="credit_type_cd" ColumnName="credit_type_cd" />
+                <ScalarProperty Name="credit_type_nm" ColumnName="credit_type_nm" />
+                <ScalarProperty Name="earned_credit" ColumnName="earned_credit" />
+                <ScalarProperty Name="syllabus" ColumnName="syllabus" />
+                <ScalarProperty Name="syllabus_url" ColumnName="syllabus_url" />
+                <ScalarProperty Name="regular_px" ColumnName="regular_px" />
+                <ScalarProperty Name="sale_px" ColumnName="sale_px" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="forum_ind" ColumnName="forum_ind" />
+                <ScalarProperty Name="classroom_sz" ColumnName="classroom_sz" />
+                <ScalarProperty Name="forum_posts_per_topic" ColumnName="forum_posts_per_topic" />
+                <ScalarProperty Name="display_start_dt" ColumnName="display_start_dt" />
+                <ScalarProperty Name="display_finish_dt" ColumnName="display_finish_dt" />
+                <ScalarProperty Name="purchase_start_dt" ColumnName="purchase_start_dt" />
+                <ScalarProperty Name="purchase_finish_dt" ColumnName="purchase_finish_dt" />
+                <ScalarProperty Name="access_start_dt" ColumnName="access_start_dt" />
+                <ScalarProperty Name="access_finish_dt" ColumnName="access_finish_dt" />
+                <ScalarProperty Name="access_day" ColumnName="access_day" />
+                <ScalarProperty Name="active_ind" ColumnName="active_ind" />
+                <ScalarProperty Name="created_dttm" ColumnName="created_dttm" />
+                <ScalarProperty Name="created_id" ColumnName="created_id" />
+                <ScalarProperty Name="modified_dttm" ColumnName="modified_dttm" />
+                <ScalarProperty Name="modified_id" ColumnName="modified_id" />
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="deployment_status" ColumnName="deployment_status" />
+                <ScalarProperty Name="reg_method" ColumnName="reg_method" />
+                <ScalarProperty Name="course_portal_nm" ColumnName="course_portal_nm" />
+                <ScalarProperty Name="self_reg_enabled_ind" ColumnName="self_reg_enabled_ind" />
+                <ScalarProperty Name="course_display_nm" ColumnName="course_display_nm" />
+                <ScalarProperty Name="course_display_img" ColumnName="course_display_img" />
+                <ScalarProperty Name="course_subject" ColumnName="course_subject" />
+                <ScalarProperty Name="course_topic" ColumnName="course_topic" />
+                <ScalarProperty Name="course_default_standard" ColumnName="course_default_standard" />
+                <ScalarProperty Name="credit_upgrade_ind" ColumnName="credit_upgrade_ind" />
+                <ScalarProperty Name="upgrade_price" ColumnName="upgrade_price" />
+                <ScalarProperty Name="upgrade_overview" ColumnName="upgrade_overview" />
+                <ScalarProperty Name="enable_evidence" ColumnName="enable_evidence" />
+                <ScalarProperty Name="credit_acceptance" ColumnName="credit_acceptance" />
+                <ScalarProperty Name="clustered_id" ColumnName="clustered_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_portal">
+            <EntityTypeMapping TypeName="CredibleModel.u_portal">
+              <MappingFragment StoreEntitySet="u_portal">
+                <ScalarProperty Name="portal_id" ColumnName="portal_id" />
+                <ScalarProperty Name="portal_nm" ColumnName="portal_nm" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+                <ScalarProperty Name="agency_id" ColumnName="agency_id" />
+                <ScalarProperty Name="school_id" ColumnName="school_id" />
+                <ScalarProperty Name="portal_type_id" ColumnName="portal_type_id" />
+                <ScalarProperty Name="marketing_partner_ind" ColumnName="marketing_partner_ind" />
+                <ScalarProperty Name="credit_grantor_ind" ColumnName="credit_grantor_ind" />
+                <ScalarProperty Name="other_credit_grantor_id" ColumnName="other_credit_grantor_id" />
+                <ScalarProperty Name="direct_buyer_ind" ColumnName="direct_buyer_ind" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="display_start_dt" ColumnName="display_start_dt" />
+                <ScalarProperty Name="display_finish_dt" ColumnName="display_finish_dt" />
+                <ScalarProperty Name="purchase_start_dt" ColumnName="purchase_start_dt" />
+                <ScalarProperty Name="purchase_finish_dt" ColumnName="purchase_finish_dt" />
+                <ScalarProperty Name="access_start_dt" ColumnName="access_start_dt" />
+                <ScalarProperty Name="access_finish_dt" ColumnName="access_finish_dt" />
+                <ScalarProperty Name="access_day" ColumnName="access_day" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="introduction" ColumnName="introduction" />
+                <ScalarProperty Name="promotion" ColumnName="promotion" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="completion" ColumnName="completion" />
+                <ScalarProperty Name="flyer_url" ColumnName="flyer_url" />
+                <ScalarProperty Name="logo_url" ColumnName="logo_url" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="contact_email" ColumnName="contact_email" />
+                <ScalarProperty Name="active_ind" ColumnName="active_ind" />
+                <ScalarProperty Name="created_dttm" ColumnName="created_dttm" />
+                <ScalarProperty Name="created_id" ColumnName="created_id" />
+                <ScalarProperty Name="modified_dttm" ColumnName="modified_dttm" />
+                <ScalarProperty Name="modified_id" ColumnName="modified_id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="theme" ColumnName="theme" />
+                <ScalarProperty Name="login_page_logo" ColumnName="login_page_logo" />
+                <ScalarProperty Name="login_page_text" ColumnName="login_page_text" />
+                <ScalarProperty Name="special_use" ColumnName="special_use" />
+                <ScalarProperty Name="self_reg_ind" ColumnName="self_reg_ind" />
+                <ScalarProperty Name="self_reg_limit_by_teacher" ColumnName="self_reg_limit_by_teacher" />
+                <ScalarProperty Name="eClassroom_logo" ColumnName="eClassroom_logo" />
+                <ScalarProperty Name="self_reg_teacher_course_limit" ColumnName="self_reg_teacher_course_limit" />
+                <ScalarProperty Name="chat_ind" ColumnName="chat_ind" />
+                <ScalarProperty Name="pwd_change_rqd_ind" ColumnName="pwd_change_rqd_ind" />
+                <ScalarProperty Name="review_mode_ind" ColumnName="review_mode_ind" />
+                <ScalarProperty Name="only_grade_complete_ind" ColumnName="only_grade_complete_ind" />
+                <ScalarProperty Name="clustered_id" ColumnName="clustered_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_registration">
+            <EntityTypeMapping TypeName="CredibleModel.u_registration">
+              <MappingFragment StoreEntitySet="u_registration">
+                <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+                <ScalarProperty Name="order_detail_id" ColumnName="order_detail_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="course_portal_id" ColumnName="course_portal_id" />
+                <ScalarProperty Name="registration_dttm" ColumnName="registration_dttm" />
+                <ScalarProperty Name="registration_type_cd" ColumnName="registration_type_cd" />
+                <ScalarProperty Name="drop_out_dttm" ColumnName="drop_out_dttm" />
+                <ScalarProperty Name="access_start_dt" ColumnName="access_start_dt" />
+                <ScalarProperty Name="access_finish_dt" ColumnName="access_finish_dt" />
+                <ScalarProperty Name="active_ind" ColumnName="active_ind" />
+                <ScalarProperty Name="created_dttm" ColumnName="created_dttm" />
+                <ScalarProperty Name="created_id" ColumnName="created_id" />
+                <ScalarProperty Name="modified_dttm" ColumnName="modified_dttm" />
+                <ScalarProperty Name="modified_id" ColumnName="modified_id" />
+                <ScalarProperty Name="complete_dttm" ColumnName="complete_dttm" />
+                <ScalarProperty Name="final_grade" ColumnName="final_grade" />
+                <ScalarProperty Name="course_portal_self_reg_id" ColumnName="course_portal_self_reg_id" />
+                <ScalarProperty Name="credit_upgrade_ind" ColumnName="credit_upgrade_ind" />
+                <ScalarProperty Name="withdrawn_ind" ColumnName="withdrawn_ind" />
+                <ScalarProperty Name="grade_id" ColumnName="grade_id" />
+                <ScalarProperty Name="enrollment_status_id" ColumnName="enrollment_status_id" />
+                <ScalarProperty Name="last_activity_date" ColumnName="last_activity_date" />
+                <ScalarProperty Name="clustered_id" ColumnName="clustered_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_user">
+            <EntityTypeMapping TypeName="CredibleModel.u_user">
+              <MappingFragment StoreEntitySet="u_user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="company_nm" ColumnName="company_nm" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="first_nm" ColumnName="first_nm" />
+                <ScalarProperty Name="last_nm" ColumnName="last_nm" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="county_id" ColumnName="county_id" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="postal_cd" ColumnName="postal_cd" />
+                <ScalarProperty Name="sec_address1" ColumnName="sec_address1" />
+                <ScalarProperty Name="sec_address2" ColumnName="sec_address2" />
+                <ScalarProperty Name="sec_city" ColumnName="sec_city" />
+                <ScalarProperty Name="sec_state" ColumnName="sec_state" />
+                <ScalarProperty Name="sec_postal_cd" ColumnName="sec_postal_cd" />
+                <ScalarProperty Name="speaker_ind" ColumnName="speaker_ind" />
+                <ScalarProperty Name="marketing_partner_ind" ColumnName="marketing_partner_ind" />
+                <ScalarProperty Name="credit_grantor_ind" ColumnName="credit_grantor_ind" />
+                <ScalarProperty Name="direct_buyer_ind" ColumnName="direct_buyer_ind" />
+                <ScalarProperty Name="active_ind" ColumnName="active_ind" />
+                <ScalarProperty Name="created_dttm" ColumnName="created_dttm" />
+                <ScalarProperty Name="created_id" ColumnName="created_id" />
+                <ScalarProperty Name="modified_dttm" ColumnName="modified_dttm" />
+                <ScalarProperty Name="modified_id" ColumnName="modified_id" />
+                <ScalarProperty Name="notification_email_ind" ColumnName="notification_email_ind" />
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="grade_level_id" ColumnName="grade_level_id" />
+                <ScalarProperty Name="position_id" ColumnName="position_id" />
+                <ScalarProperty Name="temp_pwd_changed" ColumnName="temp_pwd_changed" />
+                <ScalarProperty Name="user_agreement_accept_dttm" ColumnName="user_agreement_accept_dttm" />
+                <ScalarProperty Name="district_employee_id" ColumnName="district_employee_id" />
+                <ScalarProperty Name="state_employee_id" ColumnName="state_employee_id" />
+                <ScalarProperty Name="group_nm" ColumnName="group_nm" />
+                <ScalarProperty Name="review_mode_ind" ColumnName="review_mode_ind" />
+                <ScalarProperty Name="chat_ind" ColumnName="chat_ind" />
+                <ScalarProperty Name="soc_sec_nmb" ColumnName="soc_sec_nmb" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="avatar_url" ColumnName="avatar_url" />
+                <ScalarProperty Name="thumbnail_url" ColumnName="thumbnail_url" />
+                <ScalarProperty Name="clustered_id" ColumnName="clustered_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="CredibleModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="registration_dttm" ColumnName="registration_dttm" />
+                <ScalarProperty Name="first_nm" ColumnName="first_nm" />
+                <ScalarProperty Name="last_nm" ColumnName="last_nm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
